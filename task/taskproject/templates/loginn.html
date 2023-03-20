@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Escape Velocity by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Left Sidebar - Escape Velocity by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+	</head>
+	<body class="left-sidebar is-preload">
+	{% block content %}
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<section id="header" class="wrapper">
+
+					<!-- Logo -->
+						<div id="logo">
+							<h1><a href="index.html">Beo Bank</a></h1>
+							<p>A Perfect Banking Partner</p>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="/">Home</a></li>
+								<li>
+									<a href="#">Branches</a>
+									<ul>
+										<li><a href="https://en.wikipedia.org/wiki/Ernakulam">Ernakulam</a></li>
+										<li><a href="https://en.wikipedia.org/wiki/Palakkad">Palakad</a></li>
+										<li><a href="https://en.wikipedia.org/wiki/Thrissur">Thrissur</a></li>
+										<li><a href="https://en.wikipedia.org/wiki/Malappuram">Malappuram</a></li>
+
+									</ul>
+								</li>
+								<li class="current"><a href="registerr">Register Now</a></li>
+
+
+							</ul>
+						</nav>
+
+				</section>
+
+
+
+
+
+			<!-- Highlights -->
+				<section id="highlights" class="wrapper style3">
+					<div class="title">Log In here</div>
+					<div class="container">
+
+
+	<!-- main -->
+
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="loginn" method="post">
+                    {% csrf_token %}
+					<input class="text" style="color:#f2f2f2;" type="text" name="username" placeholder="" required=""><br>
+					<input class="text" type="password" name="password" placeholder="Password" required="">
+
+
+					<input type="submit" value="SIGNIN">
+				</form>
+				<p>Don't have an Account? <a href="registerr"> Create Now!</a></p>
+			</div>
+		</div>			</div>
+				</section>
+
+			<!-- Footer -->
+				<section id="footer" class="wrapper">
+					<div class="title">The Rest Of It</div>
+					<div class="container">
+						<header class="style1">
+							<p>beO Bank</p>
+							<p>
+								beObank, nv/SA/AG is a Belgian bank owned by a French financial conglomerate Crédit Mutuel Nord Europe. As of 2013, the company offers everyday banking
+								products through the network of 192 branches across Belgium.
+							</p>
+						</header>
+						<div class="row">
+							<div class="col-6 col-12-medium">
+
+								 <!--Contact Form -->
+									<section>
+										<form method="post" action="#">
+											<div class="row gtr-50">
+												<div class="col-6 col-12-small">
+													<input type="text" name="name" id="contact-name" placeholder="Name" />
+												</div>
+												<div class="col-6 col-12-small">
+													<input type="text" name="email" id="contact-email" placeholder="Email" />
+												</div>
+												<div class="col-12">
+													<textarea name="message" id="contact-message" placeholder="Message" rows="4"></textarea>
+												</div>
+												<div class="col-12">
+													<ul class="actions">
+														<li><input type="submit" class="style1" value="Send" /></li>
+														<li><input type="reset" class="style2" value="Reset" /></li>
+													</ul>
+												</div>
+											</div>
+										</form>
+									</section>
+
+							</div>
+							<div class="col-6 col-12-medium">
+
+								<!-- Contact -->
+									<section class="feature-list small">
+										<div class="row">
+											<div class="col-6 col-12-small">
+												<section>
+													<h3 class="icon solid fa-home">Mailing Address</h3>
+													<p>
+														Untitled Corp<br />
+														1234 Somewhere Rd<br />
+														Nashville, TN 00000
+													</p>
+												</section>
+											</div>
+											<div class="col-6 col-12-small">
+												<section>
+													<h3 class="icon solid fa-comment">Social</h3>
+													<p>
+														<a href="#">@beobank-corp</a><br />
+														<a href="#">linkedin.com/untitled</a><br />
+														<a href="#">facebook.com/untitled</a>
+													</p>
+												</section>
+											</div>
+											<div class="col-6 col-12-small">
+												<section>
+													<h3 class="icon solid fa-envelope">Email</h3>
+													<p>
+														<a href="#">info@untitled.tld</a>
+													</p>
+												</section>
+											</div>
+											<div class="col-6 col-12-small">
+												<section>
+													<h3 class="icon solid fa-phone">Phone</h3>
+													<p>
+														(000) 555-0000
+													</p>
+												</section>
+											</div>
+										</div>
+									</section>
+
+							</div>
+						</div>
+						<div id="copyright">
+							<ul>
+								<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">beOBank</a></li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.dropotron.min.js' %}"></script>
+			<script src="{% static 'assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+		{% for i in messages %}
+<h1>{{i}}</h1>
+{% endfor %}
+
+{% endblock %}
+	</body>
+</html>

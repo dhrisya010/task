@@ -1,0 +1,179 @@
+
+{% load static %}
+<!DOCTYPE html>
+<!---Coding By CodingLab | www.codinglabweb.com--->
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <!--<title>Registration Form in HTML CSS</title>-->
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+{% block content %}
+<!-- Carousel Start -->
+<body>
+<div class="container-fluid p-0">
+    <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="w-100" src="{% static 'img/img_1.png' %}" alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="{% static 'p-3' %}" style="max-width: 900px;">
+                        <i class="fa fa-home fa-4x text-primary mb-4 d-none d-sm-block"></i>
+                        <section class="container" style="color:#F4F6F7 ">
+
+                            <header><h1>MY PROFILE</h1></header>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <form action="getdata" method="post" class="form " style="text-align:center">
+                                        {% csrf_token %}
+                                        <div class="input-box">
+                                            <label>Full Name</label>
+                                            <input type="text" name="username" placeholder="Enter full name" required/>
+                                        </div>
+                                        <div class="input-box">
+                                            <label>Age</label><br>
+                                            <input type="number" placeholder="Age" required/>
+                                        </div>
+                                        <div class="input-box">
+                                            <label>Birth Date</label><br>
+                                            <input type="date" placeholder="Enter birth date" required/>
+                                        </div>
+                                        <div class="gender-box">
+                                            <h3>Gender</h3>
+                                            <div class="gender-option">
+                                                <div class="gender">
+                                                    <input type="radio" id="check-male" name="gender" checked/>
+                                                    <label for="check-male">male</label>
+                                                </div>
+                                                <div class="gender">
+                                                    <input type="radio" id="check-female" name="gender"/>
+                                                    <label for="check-female">Female</label>
+                                                </div>
+                                                <div class="gender">
+                                                    <input type="radio" id="check-other" name="gender"/>
+                                                    <label for="check-other">prefer not to say</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col-md-4">
+
+
+                                    <div class="input-box">
+                                        <label>Email Address</label>
+                                        <input type="text" placeholder="Enter email address" required/>
+                                    </div>
+
+                                    <div class="column">
+                                        <div class="input-box">
+                                            <label>Phone Number</label>
+                                            <input type="number" placeholder="Enter phone number" required/>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-box address">
+                                        <div>
+                                            <label>Address1</label>
+                                            <input type="text" placeholder="Enter street address" required/>
+                                        </div>
+                                        <div>
+                                            <label>Address2</label>
+                                            <input type="text" placeholder="Enter street address line 2" required/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row">
+
+                                        <div class="select-box">
+                                            <label>District</label><br>
+                                            <select name="dist" id="District" class="form-control">
+
+                                                <option value="0">--Select District--</option>
+                                                {% for item in District %}
+                                                <option value="{{ item.id }}">{{ item.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+
+                                        <div class="select-box">
+                                            <label>District</label><br>
+                                            <select name="bnch" id="branch" class="form-control">
+                                                <option value="0">--Select branch--</option>
+                                                {% for item in branch %}
+                                                <option value="{{ item.branchid_id }}">{{ item.branchname }}
+                                                </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+
+
+                                        <div class="select-box">
+                                            <label>Account Type</label><br>
+                                            <select class="form-control">
+                                                <option hidden>Account Type</option>
+                                                <option name="Savings Account">Savings Account</option>
+                                                <option name="Current Account">Current Account</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <label>Materials Provide</label><br>
+                                        <div class="material">
+                                            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                            <label>Debit card</label>
+
+                                        </div>
+                                        <div class="material">
+                                            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                            <label for="vehicle2">Credit card</label>
+
+                                        </div>
+                                        <div class="material">
+                                            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                            <label for="vehicle2">Cheque Book</label>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <button>Submit</button>
+                    </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<!-- Carousel End -->
+<script>
+            $(document).ready(function(){
+
+             var District = $("#District");
+             var branch = $("#branch");
+             var $options = branch.find('option');
+             District.on('change',function(){
+                branch.html($options.filter('[value="'+ this.value  +'"]'));
+             }).trigger('change');
+
+
+            });
+
+
+
+</script>
+
+</body>
+
+{% endblock %}
+</html>

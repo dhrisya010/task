@@ -1,0 +1,39 @@
+
+{% load static %}
+<html>
+<body>
+{% block content %}
+<div class="container-fluid">
+    <div class="carousel-item active">
+        <div>
+
+                            <div class="login form" style="text-align:center;">
+                                <header><h1>Login</h1></header>
+                                <form action="login" method="post">
+                                    {% csrf_token %}
+                                    <span class="details">username</span>
+                                    <input type="text" name="username" placeholder="Enter your username"><br>
+                                    <span class="details">password</span>
+                                    <input type="password" name="password" placeholder="Enter your password"><br>
+                                    <div class="button">
+                                        <input type="submit" value="Login">
+                                    </div>
+                                </form>
+                                <div class="signup">
+                                  <span class="signup">Don't have an account?<br>
+                                   <label for="check"><a href="register">Signup</a> </label><br>
+                                  </span>
+                                </div>
+                            </div>
+            <img class="w-100" src="{% static 'image/img_1.png' %}" alt="Image">
+
+            </div>
+    </div>
+</div>
+
+{% for i in messages %}
+<h1>{{i}}</h1>
+{% endfor %}
+</body>
+{% endblock %}<br>
+</html>

@@ -1,0 +1,49 @@
+
+{% load static %}
+<html>
+<body>
+{% block content %}
+
+    <div class="container" style="color:black; text-align:center;">
+                            <div class="title"><h1> Registration</h1></div>
+                            <br>
+                            <div class="content">
+                                <form action="register" method="post">
+                                    {% csrf_token %}
+                                    <div class="user-details">
+                                        <div class="input-box">
+                                            <span class="details">username</span><br>
+                                            <input type="text" name="username" placeholder="Enter your username"
+                                                   required>
+                                        </div>
+                                        <br>
+                                        <div class="input-box">
+                                            <span class="details">password</span><br>
+                                            <input type="text" name="password" placeholder="Enter your password"
+                                                   required>
+                                        </div>
+                                        <br>
+                                        <div class="input-box">
+                                            <span class="details">confirm_Password</span><br>
+                                            <input type="text" name="password1" placeholder="Confirm your password"
+                                                   required>
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <br>
+                                    <div class="button">
+                                        <input type="submit" value="Register">
+                                    </div>
+                                </form>
+                                 <img class="w-100" src="{% static 'image/img_1.png' %}" alt="Image">
+                            </div>
+                        </div>
+</div>
+
+
+{% for i in messages %}
+<h1>{{i}}</h1>
+{% endfor %}
+</body>
+{% endblock %}<br>
+</html>

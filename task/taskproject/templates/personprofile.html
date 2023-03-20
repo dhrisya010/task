@@ -1,0 +1,228 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Form-v10 by Colorlib</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/montserrat-font.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/material-design-iconic-font/css/material-design-iconic-font.min.css' %}">
+	<!-- Main Style Css -->
+
+
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+	<script>
+	            $(document).ready(function(){
+
+             var District = $("#District");
+             var branch = $("#branch");
+             var $options = branch.find('option');
+             District.on('change',function(){
+                branch.html($options.filter('[value="'+ this.value  +'"]'));
+             }).trigger('change');
+            });
+
+</script>
+</head>
+<body class="form-v10">
+
+
+
+{% block content %}
+
+
+	<div class="page-content">
+
+
+		<div class="form-v10-content">
+
+
+			<form class="form-detail" action="getdata" method="post" id="myform">
+				{% csrf_token %}
+				<div class="form-left">
+
+					<div >
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<p style="text-align:center;color:#2271dd;">
+							{% if user.is_authenticated %}
+									Hello {{user.username}} ,Welcome to Beo Bank
+							{% endif %}
+						</p>
+					</div>
+
+
+
+					<h2>General Infomation</h2>
+
+					<div class="form-group">
+						<div class="form-row form-row-1">
+							<input type="text" name="first_name" id="first_name" class="input-text" placeholder="First Name" required>
+						</div>
+						<div class="form-row form-row-2">
+							<input type="text" name="last_name" id="last_name" class="input-text" placeholder="Last Name" required>
+						</div>
+					</div>
+					<div class="form-row">
+						<input type="number" name="Age" class="company" id="company" placeholder="Age" required>
+					</div>
+
+					<div class="form-row">
+						<select name="Gender" >
+							<option value="Male">Gender</option>
+						    <option value="Male">Male</option>
+						    <option value="Female">Female</option>
+							<option value="Other">Others</option>
+
+						</select>
+						<span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+
+					<div class="form-row">
+						<select name="avvType">
+						    <option value="acctype">Account Type</option>
+						    <option value="Savings">Savings Account</option>
+						    <option value="Current">Current Account</option>
+						    <option value="NRE">NRI Account</option>
+						</select>
+						<span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+					<div class="form-row">
+						<input type="date" name="DOB" class="company" id="DOB" placeholder="DOB" required>
+					</div>
+					<div class="form-group">
+
+						<div class="form-row form-row-3">
+							<select name="dist" id="District" class="form-control">
+
+                                                <option value="0">--Select District--</option>
+                                                {% for item in District %}
+                                                <option value="{{ item.id }}">{{ item.name }}</option>
+                                                {% endfor %}
+                                            </select>
+
+
+							<span class="select-btn">
+							  	<i class="zmdi zmdi-chevron-down"></i>
+							</span>
+						</div>
+						<div class="form-row form-row-4">
+                          <select name="bnch" id="branch" class="form-control">
+                                                <option value="0">--Select branch--</option>
+                                                {% for item in branch %}
+                                                <option value="{{ item.branchid_id }}">{{ item.branchname }}
+                                                </option>
+                                                {% endfor %}
+                                            </select>
+
+
+
+
+
+
+							<span class="select-btn">
+							  	<i class="zmdi zmdi-chevron-down"></i>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-right">
+					<h2>Contact Details</h2>
+					<div class="form-row">
+						<input type="text" name="street" class="street" id="street" placeholder="Street + Nr" required>
+					</div>
+
+					<div class="form-group">
+						<div class="form-row form-row-1">
+							<input type="text" name="zip" class="zip" id="zip" placeholder="Zip Code" required>
+						</div>
+						<div class="form-row form-row-2">
+							<select name="place">
+							    <option value="place">Place</option>
+							    <option value="Street">Street</option>
+							    <option value="District">District</option>
+							    <option value="City">City</option>
+							</select>
+							<span class="select-btn">
+							  	<i class="zmdi zmdi-chevron-down"></i>
+							</span>
+						</div>
+					</div>
+					<div class="form-row">
+						<select name="country">
+						    <option value="country">Country</option>
+						    <option value="Vietnam">Vietnam</option>
+						    <option value="Malaysia">Malaysia</option>
+						    <option value="India">India</option>
+						</select>
+						<span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+					<div class="form-group">
+						<div class="form-row form-row-1">
+							<input type="text" name="code" class="code" id="code" placeholder="Code +" required>
+						</div>
+						<div class="form-row form-row-2">
+							<input type="text" name="phone" class="phone" id="phone" placeholder="Phone Number" required>
+						</div>
+					</div>
+					<div class="form-row">
+						<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Your Email">
+					</div>
+
+					<h2>Materials provided</h2>
+					<div class="form-checkbox">
+
+						<label class="container"> <p>Cheque Book</p>
+						  	<input type="checkbox" id="ChqBook">
+						  	<span class="checkmark"></span>
+						</label>
+					</div>
+
+					<div class="form-checkbox">
+
+						<label class="container"> <p>Debit Card </p>
+						  	<input type="checkbox" id="debitcard">
+						  	<span class="checkmark"></span>
+						</label>
+					</div>
+
+
+					<div class="form-checkbox">
+
+						<label class="container"> <p>Credit Card </p>
+						  	<input type="checkbox" id="creditcard">
+						  	<span class="checkmark"></span>
+						</label>
+					</div>
+
+
+
+					<div class="form-row-last">
+						<input type="submit" name="register" class="register" value="Submit">
+					&nbsp;
+						&nbsp;
+						&nbsp;
+						&nbsp;
+					<input type="submit" id="logout" class="register" value="Log Out!">
+					</div>
+
+
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+{% endblock %}
+</body>
+</html>
